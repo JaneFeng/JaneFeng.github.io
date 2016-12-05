@@ -484,19 +484,9 @@ nav a:hover {
   pointer-events: none;
 }
 footer.footer-content {
-  padding-top: 100px;
   width: 100%;
-  min-height: 350px;
-  background: #0f1516;
   color: #d7ecff;
-  border-top: 1px dotted #d7ecff;
   text-align: center;
-}
-@media (max-width: 33.9em) {
-  footer.footer-content {
-    min-height: 250px;
-    padding-top: 60px;
-  }
 }
 footer.footer-content a,
 footer.footer-content a:link,
@@ -549,8 +539,9 @@ footer.footer-content .footer-social-icons li a:active {
   border-bottom: 0;
 }
 footer.footer-content .footer-copyright {
-  margin: 0 0 40px 0;
   font-size: 0.7em;
+  height: 80px;
+  line-height: 80px;
 }
 code {
   color: #a9b7c6;
