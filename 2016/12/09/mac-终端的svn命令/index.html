@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="mac上一直找不到好的svn可视化工具，git有sourcetree这个神器，前端同事用的phpstorm内置svn很好用，但可惜我是sublime text的忠实拥趸，再可惜是sublime text 3上svn插件太难用（我不会告诉你其实是我一直装不上报错）。既然mac自带svn，干脆敲命令行算">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="mac 终端的svn命令"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="JasonFeng"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>mac 终端的svn命令 - JasonFeng</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    首页
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-code" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2016/12/09/mac-终端的svn命令/">
+                mac 终端的svn命令
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2016-12-09</span>
+            
+            <!-- <a href="#disqus_thread" class="comments">留言</a> -->
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>mac上一直找不到好的svn可视化工具，git有sourcetree这个神器，前端同事用的phpstorm内置svn很好用，但可惜我是sublime text的忠实拥趸，再可惜是sublime text 3上svn插件太难用（我不会告诉你其实是我一直装不上报错）。既然mac自带svn，干脆敲命令行算了，看着命令行滚动也挺舒(zhuang)服(bi)的</p>
+<h3 id="1-将文件checkout到本地目录"><a href="#1-将文件checkout到本地目录" class="headerlink" title="1.将文件checkout到本地目录"></a>1.将文件checkout到本地目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn checkout path</div></pre></td></tr></table></figure>
+<p>其中，path是服务器上的目录，例如：<code>svn checkout svn://......</code><br>可简写为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn co</div></pre></td></tr></table></figure></p>
+<h3 id="2-往版本库中添加新的文件"><a href="#2-往版本库中添加新的文件" class="headerlink" title="2.往版本库中添加新的文件"></a>2.往版本库中添加新的文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn add file</div></pre></td></tr></table></figure>
+<p>例如：往版本库添加demo.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn add demo.html</div></pre></td></tr></table></figure></p>
+<p>添加所有css文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn add *.css</div></pre></td></tr></table></figure></p>
+<h3 id="3-将改动的文件提交到版本库"><a href="#3-将改动的文件提交到版本库" class="headerlink" title="3.将改动的文件提交到版本库"></a>3.将改动的文件提交到版本库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn commit -m &quot;message&quot; [-N] [--no-unlock] PATH</div></pre></td></tr></table></figure>
+<p>例如：（如果选择了保持锁，就使用–no-unlock开关）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn commit -m &quot;change functuon&quot; demo.html</div></pre></td></tr></table></figure></p>
+<p>可简写为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn ci</div></pre></td></tr></table></figure></p>
+<h3 id="4-加锁"><a href="#4-加锁" class="headerlink" title="4.加锁"></a>4.加锁</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn lock -m &quot;message&quot; [--force] PATH</div></pre></td></tr></table></figure>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn lock -m &quot;lock demo&quot; demo.html</div></pre></td></tr></table></figure></p>
+<h3 id="5-解锁"><a href="#5-解锁" class="headerlink" title="5.解锁"></a>5.解锁</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn unlock PATH</div></pre></td></tr></table></figure>
+<h3 id="6-更新到某个版本"><a href="#6-更新到某个版本" class="headerlink" title="6.更新到某个版本"></a>6.更新到某个版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn update -r m PATH</div></pre></td></tr></table></figure>
+<p>例如：更新当前目录下所有文件到最新版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn update</div></pre></td></tr></table></figure></p>
+<p>可简写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn up</div></pre></td></tr></table></figure></p>
+<p>将版本库中的文件demo.html更新到版本216<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn update -r 216 demo.html</div></pre></td></tr></table></figure></p>
+<p>更新demo.html与版本库同步。通常提交新版本的时候提示冲突，那么需要先update，然后清除resolved，最后在提交commit<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn update demo.html</div></pre></td></tr></table></figure></p>
+<h3 id="7-查看文件或者目录状态"><a href="#7-查看文件或者目录状态" class="headerlink" title="7.查看文件或者目录状态"></a>7.查看文件或者目录状态</h3><p>查看目录下的文件和子目录的状态，正常状态不显示（?:不在svn的控制中；M:内容修改过；C:发生冲突；A:预定加入版本库；K:被锁定）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn status PATH</div></pre></td></tr></table></figure></p>
+<p>显示文件和子目录状态（第一列保持相同，第二列显示工作版本号，第三和第四列显示最后一次修改的版本号和修改人）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn status -v PATH</div></pre></td></tr></table></figure></p>
+<p>可简写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn st</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>小tips</strong>：<code>svn status</code>、<code>svn diff</code>和<code>svn revert</code>这三条命令在没有网络的情况下也可以执行的，原因是svn在本地的.svn中保留了本地版本的原始拷贝。</p>
+</blockquote>
+<h3 id="8-删除文件"><a href="#8-删除文件" class="headerlink" title="8.删除文件"></a>8.删除文件</h3><p>删除demo.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn delete PATH -m &quot;delete demo.html&quot;</div></pre></td></tr></table></figure></p>
+<p>例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn delete svn://11..../demo.html -m &quot;delete demo.html&quot;</div></pre></td></tr></table></figure></p>
+<p>可简写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn (del,remove,rm)</div></pre></td></tr></table></figure></p>
+<p>推荐先直接删除本地文件<code>svn delete demo.html</code>，然后再推送服务器更新<code>svn ci -m &quot;delete demo.html&quot;</code></p>
+<h3 id="9-查看日志"><a href="#9-查看日志" class="headerlink" title="9.查看日志"></a>9.查看日志</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn log PATH</div></pre></td></tr></table></figure>
+<p>例如：显示demo.html所有修改记录，及其版本号的变化<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn log demo.html</div></pre></td></tr></table></figure></p>
+<h3 id="10-查看文件详细信息"><a href="#10-查看文件详细信息" class="headerlink" title="10.查看文件详细信息"></a>10.查看文件详细信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn info PATH</div></pre></td></tr></table></figure>
+<p>例如：查看demo.html的详细信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn info demo.html</div></pre></td></tr></table></figure></p>
+<h3 id="11-比较差异"><a href="#11-比较差异" class="headerlink" title="11.比较差异"></a>11.比较差异</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn diff PATH</div></pre></td></tr></table></figure>
+<p>例如：将demo.html与其基础版本比较<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn diff demo.html</div></pre></td></tr></table></figure></p>
+<p>demo.html的版本215和版本216比较差异<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn diff -r 215:216 demo.html</div></pre></td></tr></table></figure></p>
+<p>可简写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn di</div></pre></td></tr></table></figure></p>
+<h3 id="12-将两个版本合并到当前新的版本"><a href="#12-将两个版本合并到当前新的版本" class="headerlink" title="12.将两个版本合并到当前新的版本"></a>12.将两个版本合并到当前新的版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn merge -r m:n PATH</div></pre></td></tr></table></figure>
+<p>例如：将demo.html的版本215与216合并，但是一般都会产生冲突报错，需要处理冲突<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn merge -r 215:216 demo.html</div></pre></td></tr></table></figure></p>
+<h3 id="13-svn帮助"><a href="#13-svn帮助" class="headerlink" title="13.svn帮助"></a>13.svn帮助</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn help</div><div class="line">svn help ci</div></pre></td></tr></table></figure>
+<h3 id="14-显示版本库下的文件和目录列表"><a href="#14-显示版本库下的文件和目录列表" class="headerlink" title="14.显示版本库下的文件和目录列表"></a>14.显示版本库下的文件和目录列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn list PATH</div></pre></td></tr></table></figure>
+<p>可简写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn ls</div></pre></td></tr></table></figure></p>
+<h3 id="15-创建纳入版本控制下的新目录"><a href="#15-创建纳入版本控制下的新目录" class="headerlink" title="15.创建纳入版本控制下的新目录"></a>15.创建纳入版本控制下的新目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn mkdir PATH/URL</div></pre></td></tr></table></figure>
+<p>使用该命令前必须先在本地创建目录<br>PATH是在本地创建新目录，并加入新增调度，等待下次一起提交到服务器仓库<br>URL是在服务器仓库创建目录</p>
+<h3 id="16-恢复本地修改"><a href="#16-恢复本地修改" class="headerlink" title="16.恢复本地修改"></a>16.恢复本地修改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn revert PATH</div></pre></td></tr></table></figure>
+<p>恢复原始未改变的工作副本文件（即恢复大部分的本地修改）。注意，本子命令不会存取网络，并且会解除冲突的状况。但是并不会恢复被删除的目录</p>
+<h3 id="17-代码仓库URL变更"><a href="#17-代码仓库URL变更" class="headerlink" title="17.代码仓库URL变更"></a>17.代码仓库URL变更</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">svn switch URL [PATH]</div><div class="line">svn switch --relocate FROM TO [PATH]</div></pre></td></tr></table></figure>
+<p>URL：更新你的工作副本，映射到一个新的URL，其行为跟<code>svn update</code>很像，也会将服务器上文件与本地文件合并。这是将工作副本对应到同一仓库中某个分支或者标记的方法。<br>–relocate：改写工作副本的URL元数据，以反映单纯的URL上的改变。当仓库的根URL变动(比如方案名或是主机名称变动)，但是工作副本仍旧对映到同一仓库的同一目录时使用这个命令更新工作副本与仓库的对应关系。</p>
+<h3 id="18-解决冲突"><a href="#18-解决冲突" class="headerlink" title="18.解决冲突"></a>18.解决冲突</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn resolved PATH</div></pre></td></tr></table></figure>
+<p>移除工作副本的目录或文件的冲突状态<br>注意：本子命令不会依语法来解决冲突或是移除文件中的冲突标记，它只是把冲突的文件移除，方便提交更新</p>
+<h3 id="19-输出指定文件或URL的内容"><a href="#19-输出指定文件或URL的内容" class="headerlink" title="19.输出指定文件或URL的内容"></a>19.输出指定文件或URL的内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">svn cat -r PREV filename &gt; filename</div></pre></td></tr></table></figure>
+<p>PREV 是上一版本,也可以写具体版本号,这样输出结果是可以提交的</p>
+<p>最后。看标题，看标题，看标题，以下命令是mac上的终端命令，windows用不了不负责</p>
+
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/程序员技能/">#程序员技能</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+    	<div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/JaneFeng" title="我的github(章鱼猫)" target="_blank">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="http://weibo.com/2647404347/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="我的微博" target="_blank">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-weibo"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="http://steamcommunity.com/profiles/76561198091667698" title="我的steam" target="_blank">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-steam"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+					<li class="list-inline-item">
+					    <a href="https://www.zhihu.com/people/Jason-Feng-929/activities" title="我的知乎" target="_blank">
+					        <span class="footer-icon-container">
+					            <i class="fa fa-zhihu iconfont">&#xe680;</i>
+					        </span>
+					    </a>
+					</li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="http://music.163.com/#/user/home?id=121664910" title="我的网易云音乐" target="_blank">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-muisc163 iconfont">&#xe601;</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                	
+                		<span id="busuanzi_container_site_uv">
+						  	hi,你是到访的第<span id="busuanzi_value_site_uv"></span>个小伙伴
+						</span><br>
+                	
+                    @2016&nbsp;&nbsp;<a href="https://github.com/JaneFeng" target="_blank">董宏锋&nbsp;-&nbsp;JasonFeng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- 不蒜子，计算到访人数 -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
