@@ -76,4 +76,14 @@ $(document).ready(function () {
     alphaDust.initPostHeader();
     alphaDust.initMenu();
     alphaDust.displayArchives();
+
+    // 解决内容过少页面不够高导致底部工具栏没贴合底部
+    var winHeight = $(window).height(),
+        bodyHeight = $('body').height(),
+        pushHeight = $('.push').height(),
+        pushNewHeight = 0;
+    if(winHeight > bodyHeight){
+        pushNewHeight = winHeight - bodyHeight + pushHeight;
+        $('.push').height(pushNewHeight + 'px')
+    }
 });
