@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.4.0 -->
+    <script>window.materialVersion = "1.4.0"</script>
+
+    <!-- Title -->
+    
+    <title>
+        
+            前端工具类函数的封装 | 
+        
+        JasonFeng
+    </title>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+    
+        <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
+    
+    
+    
+    
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="JasonFeng">
+    <meta name="description" itemprop="description" content="
+封装记录日常开发中用到的工具栏函数，方便以后复用。
+">
+    <meta name="keywords" content="null,封装">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="JasonFeng">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="前端工具类函数的封装 | JasonFeng">
+    <meta property="og:image" content="/img/favicon.png" />
+    <meta property="og:description" content="
+封装记录日常开发中用到的工具栏函数，方便以后复用。
+">
+    <meta property="og:article:tag" content="封装"> 
+
+    
+        <meta property="article:published_time" content="Mon Dec 18 2017 12:13:28 GMT+0800" />
+        <meta property="article:modified_time" content="Mon Dec 18 2017 12:14:50 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="前端工具类函数的封装 | JasonFeng">
+    <meta name="twitter:description" content="
+封装记录日常开发中用到的工具栏函数，方便以后复用。
+">
+    <meta name="twitter:image" content="/img/favicon.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://yoursite.com" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2017/12/18/前端工具类函数的封装/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "JasonFeng",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "JasonFeng",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "可曾还有哪个人，能让我幻想"
+    },
+    "headline": "前端工具类函数的封装",
+    "url": "http://yoursite.com/2017/12/18/前端工具类函数的封装/index.html",
+    "datePublished": "Mon Dec 18 2017 12:13:28 GMT+0800",
+    "dateModified": "Mon Dec 18 2017 12:14:50 GMT+0800",
+    "description": "
+封装记录日常开发中用到的工具栏函数，方便以后复用。
+",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://yoursite.com"
+    }
+}
+</script>
+
+
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+materialVersion+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(data&&data.indexOf(versionString)===-1){lsloader.removeLS(key)}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload){cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload);return}code=code.split(versionString)[1];if(/\.js?.+$/.test(versionNumber)){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload)}};lsloader.requestResource=function(name,path,cssonload){var that=this;if(/\.js?.+$/.test(path)){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else if(/\.css?.+$/.test(path)){this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import CSS & jQuery -->
+    
+        <style id="css/material.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/material.min.css","/css/material.min.css?fJTiM/K1J3dWIruo3pxtAw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        <style id="css/style.min.css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("css/style.min.css","/css/style.min.css?oCSEO3ST+aEypEwttTDI9g==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";})</script>
+        
+        
+            <style>
+    
+    
+    .footer-sns-twitter {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNiA3OGMtMjIuNCA1LjItNTUuOCA0MC4yLTYwLjYgNjMuNC0xLjQgNi40LTIgMTI5LjgtMS42IDM2Ny42LjYgMjk4LjYgMSAzNTguOCAzLjQgMzYzIDExIDIwLjIgMjEuNiAzMi40IDM3LjIgNDMgMTUgMTAuMiAxNy40IDExLjIgMzMgMTMgMTEuMiAxLjQgMTM2IDIgMzY1IDEuNiAzMTQtLjYgMzQ4LjYtMSAzNTUtMy44IDE1LjgtNy4yIDMzLjgtMjIgNDMuMi0zNS40IDUuMi03LjQgMTAuOC0xNi42IDEyLjYtMjAuNCAyLjgtNi40IDMuMi00MC44IDMuOC0zNTQgLjQtMjIzLS4yLTM1My40LTEuNC0zNjUtMi0xNy0yLjYtMTguNi0xMy0zNC04LjYtMTIuNi0xNC4yLTE4LjQtMjUuMi0yNS44LTcuOC01LjQtMTcuNC0xMS0yMS42LTEyLjQtNi0yLjItNzIuOC0yLjYtMzY1LjQtMi42LTE5Ni44LjItMzYxIC44LTM2NC40IDEuOHptNTMyLjggMjA1YzEwIDQgMjMgMTAuOCAyOC44IDE1LjIgMTIuNiA5LjIgMTYuNiAxMC42IDI5LjQgOS40IDYuNi0uNiAxMy0zLjIgMjAuNC04LjIgMTEuMi03LjYgMTkuNC05LjIgMjMuNi01IDMuNiAzLjYgMi44IDktMi44IDE4LjYtNy4yIDEyLjQtNiAxOC44IDQuMiAyNC4yIDQuNCAyLjIgOC4yIDUuNiA4LjYgNy40IDEgNC44LTEyLjYgMjQuMi0yMiAzMS44LTExLjggOS4yLTE3LjIgMjIuNi0xOS42IDQ3LjgtNC44IDUwLjQtNy44IDY2LjYtMTYuNCA4NS40LTMgNy03IDE3LjgtOC44IDI0LTEuOCA2LjQtNSAxNC42LTcuNCAxOC40LTIuMiAzLjgtNy40IDEzLTExLjQgMjAuNC0xNy4yIDMwLjgtNDMuNCA2MS40LTcxLjQgODMuOC0yNS42IDIwLjQtNDYgMzMuMi02NC4yIDQwLjItOC40IDMuMi0xOCA3LjYtMjEuNCA5LjYtNy40IDQuNi0yMi40IDguNi01Ny4yIDE1LTYyLjIgMTEuNi03OS4yIDExLjQtMTM1LjYtMS0zMi40LTctMzguNi05LTUyLTE2LjgtMjEuNC0xMi42LTI0LjItMTQuOC0yNC4yLTE5LjQgMC02LjIgMTAuMi05LjIgMzUtMTAuNCAyMi40LTEgMjguNi0yLjYgNTctMTQuMiAyMy44LTkuOCAyOS40LTEyLjggMzAuNC0xNi44IDIuMi04LjItMy0xMy4yLTI2LjgtMjUuNC0yNS44LTEzLjItMzIuMi0xOC40LTQzLjgtMzUuOC05LTEzLjYtMTAtMjEuMi0zLjYtMzMuNiA1LjQtMTAuOCAzLjYtMTUtMTEuOC0yNS40LTktNi0xNC0xMS42LTIwLjgtMjIuNi0yMy40LTM3LjgtMjUtNTAuOC03LjItNTkuOCA0LjgtMi40IDkuNC01LjQgMTAuMi02LjYgMi44LTQuMi0uNC0xNS42LTguNC0yOS0xMS42LTE5LjYtMTMuMi0yNS44LTEzLjItNTUuMiAwLTI4LjggMi42LTM3LjggMTItNDAuMiA5LTIuMiAxNC44IDEgMzUuNiAyMC4yIDI0LjggMjIuOCA0My42IDM2LjYgNjIuOCA0NS44IDggMy44IDE3LjggOS4yIDIyIDEyIDQuMiAyLjggMTQuOCA3IDIzLjQgOS4yIDguNiAyLjIgMjQuMiA2LjggMzQuOCAxMC4yIDEzLjQgNC40IDIzLjYgNi40IDMzIDYuNiAxMi44LjIgMTQuMi0uMiAxOC42LTUuNCA0LTQuOCA0LjgtNy44IDQuOC0xOS4yIDAtMTQuNCA1LjYtMzkuNiAxMS4yLTUwLjYgNC4yLTguNCAyOS4yLTM0LjIgMzkuOC00MS40IDcuOC01LjQgMzUuNi0xNiA1Mi0yMCAxNC4yLTMuNiAzMi42LTEuMiA1Mi40IDYuOHoiLz48L3N2Zz4=);
+    }
+    
+    
+    
+    .footer-sns-weibo {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzUuMiA3OWMtOC42IDMtMjIuOCAxMi40LTMyLjggMjEuOC04LjIgNy44LTIyLjIgMzEtMjQuNiA0MC42LTEgNC4yLTEuNiAxNjctMS42IDM2NC42IDAgMjg0LjguNCAzNTguNCAyLjYgMzY0IDEuNCAzLjggNi44IDEzIDEyIDIwLjQgOC44IDEyLjggMjQgMjUuNCA0MS44IDM1IDYgMy40IDI3IDMuNiAzNjcuNCAzLjYgMjg2LjIgMCAzNjIuNi0uNiAzNjktMi42IDE5LjgtNi4yIDUxLjItMzcuNiA1Ny40LTU3LjQgMi02LjQgMi42LTgyLjYgMi42LTM2OFYxNDFsLTQuMi05Yy0xMS42LTI0LTM5LjItNDkuOC01OC4yLTU0LjItNC4yLTEtMTY4LjYtMS42LTM2NS42LTEuNi0zMDAgMC0zNTkuMi40LTM2NS44IDIuOHptNTU4LjYgMTY5YzguNiAxLjIgMTYuNCA0IDI0IDguNiA2LjIgMy42IDE1LjIgOC4yIDIwLjIgMTAuMiA1LjggMi4yIDE0LjYgOC44IDI1IDE4LjggMjUuNCAyNC44IDMyLjggMzQuOCAzNy44IDUxIDIuNiA4IDcuNCAxOS44IDEwLjggMjYuNCA3LjggMTQuNiAxMS42IDQyLjYgOS40IDY5LTEgMTQuMi0yLjIgMTguNi03LjQgMjYuNC0zLjIgNS4yLTkgMTIuMi0xMi44IDE1LjYtMTMuOCAxMi0zNCA1LjgtMzguOC0xMi0xLjYtNi0xLjQtMTEuNCAxLjItMjMuNCA0LjItMjAgMy00Ni0yLjYtNTguNi0yLjItNS04LTEyLjYtMTIuOC0xNi44LTQuOC00LjItMTQuNi0xNi40LTIxLjgtMjYuOC03LjItMTAuNi0xNS4yLTIwLjgtMTgtMjIuOC0yLjgtMi0xMi42LTYtMjItOS0xNC40LTQuNC0yMC44LTUuNC00My01LjYtMjgtLjItMzEuNC0xLjItNDIuNC0xMS42LTcuNC03LTguNi0xNS42LTMuOC0yNS4yIDctMTMuMiAxNi40LTE2IDU0LjItMTYgMTYuNiAwIDM1LjguOCA0Mi44IDEuOHptLTIxMy42IDc1LjZjMjAuMiAxNS40IDIwLjYgMTYuNCAyMiA0OCAuNiAxNSAxLjggMjkgMi42IDMxIDIuOCA2LjIgMTEgNi42IDIxLjYuNiA1LjQtMy4yIDE0LTUuOCAyMC02LjQgNS44LS42IDE4LjgtMi40IDI5LTQuMiAxNy4yLTMgMTkuNC0zIDM2IC40IDMyIDYuNiAzNS44IDkuMiA0NC4yIDMxLjYgNS4yIDE0IDUuNCAyMS40IDEuMiAzMi44LTIuMiA1LjQtMi44IDExLTIgMTUuNCAxLjggMTAgMTcuNiAyMy40IDM1IDMwLjIgMTEuMiA0LjIgMTYuMiA3LjYgMjcgMTkgMTkuMiAxOS44IDIwLjIgMjMgMjAgNTktLjIgMzUtLjQgMzUuNC0xOS44IDYzLjYtMTMuOCAxOS44LTMyLjQgMzguNi00OSA1MC01IDMuNC0xMi4yIDguOC0xNS44IDEyLTMuOCAzLjItMTEuNiA4LTE3LjIgMTAuNC01LjYgMi42LTE0LjYgNy40LTE5LjggMTAuNi01LjIgMy40LTE1LjggNy42LTIzLjggOS40LTggMi0yMS4yIDYuNi0yOS42IDEwLjItMjIuNCAxMC0zNi4yIDExLjItMTIxLjggMTAuNGwtNzUtLjYtMTktOC40Yy0xMC42LTQuNi0yNS40LTkuOC0zMy0xMS42LTcuNi0xLjYtMTgtNS44LTIzLTlzLTE0LjItOC0yMC40LTEwLjhjLTE4LTgtNTkuNC00Ni4yLTY2LTYxLjItMi4yLTUtNy40LTE0LjQtMTEuNC0yMC44bC03LjItMTJWNTQ5bDcuNi0xMy42YzQuMi03LjQgOS40LTE4LjYgMTEuNi0yNC44IDMuOC0xMS40IDEzLjQtMjcuOCAyNC44LTQyLjYgMjAuMi0yNi4yIDM4LjQtNDYuOCA1My02MCA5LjItOC4yIDIxLTE4LjYgMjYtMjMuMiA1LTQuNCAxMy4yLTExIDE4LjYtMTQuNiA1LjItMy40IDkuNC03LjIgOS40LTggMC0xIDUuNi00LjYgMTIuNi04LjIgNi44LTMuOCAxNi40LTkuNiAyMS40LTEzLjIgNS0zLjYgMTQuNC04IDIxLTkuOCA2LjYtMiAxNy44LTYuNiAyNS0xMC4yIDEyLTYuMiAxNC40LTYuOCAzMi40LTYuOGgxOS40bDEyLjQgOS42em0yMDMuNiAxMy4yYzMgMS42IDYuNiA0LjQgOCA2IDEuNiAxLjggOS40IDcgMTcuNCAxMS42IDE3IDkuNiAxOSAxMyAyNCA0MiAzLjQgMjAuNCAyLjYgMzIuMi0zLjQgNDMuOC03LjYgMTUuMi0yMi44IDIwLjYtMzEuMiAxMS4yLTctNy42LTkuMi0xMy44LTEwLjYtMjkuNi0xLjItMTMuMi0yLjQtMTYuNC05LjYtMjcuMi0xMS0xNi0xNi44LTIwLjYtMjcuMi0yMC42LTEwIDAtMjQtNi4yLTI3LTExLjYtNS44LTEwLjguNC0yNC42IDEyLjQtMjguNCA4LjYtMi42IDQwLjItLjggNDcuMiAyLjh6Ii8+PHBhdGggZD0iTTQyNCA0NzcuNGMtMzIuNiAzLjYtNDcuOCA3LTYxLjggMTMuOC04IDQtMTkgOC40LTI0LjIgMTAtNS4yIDEuNi0xMi40IDUtMTYuMiA3LjgtMy44IDIuNi0xMSA3LjYtMTYuMiAxMS0xMy40IDguOC0zNSAzMy4yLTM4LjggNDQtMS44IDUtNS40IDE0LjQtOC4yIDIxLTguOCAyMS4yLTguMiAyNi44IDQgNTMgMTAuNiAyMi42IDExIDIzLjIgMjcuNiAzNi40IDIxIDE2LjggMjMuNiAxOC40IDUwLjggMjguMiAyMC4yIDcuMiAyNC42IDggNTQgMTAgMTcuNiAxLjIgNDUuNiAyLjIgNjIgMi4ybDMwIC4yIDE3LjQtOC40YzkuNi00LjYgMjIuNC05LjYgMjguMi0xMS40IDYtMS44IDE1LjQtNi4yIDIwLjgtMTAgNS40LTMuNiAxMy40LTguNiAxNy42LTEwLjggOS4yLTQuNiAzOS0zNC40IDM5LTM5IDAtMS42IDMuOC0xMC4yIDguNC0xOC44IDcuOC0xNC4yIDguNi0xNi44IDguNC0yOS42LS4yLTEyLjgtMS0xNS44LTEwLjYtMzQuNi0xMy40LTI2LjItMzAuNC00My42LTUwLjItNTEuNC03LjItMi44LTE2LjItNy0yMC05LjYtMTEuNC03LjYtMTcuNi05LjItNDguOC0xMi40LTI3LjYtMi44LTU2LjYtMy40LTczLjItMS42em0zOS40IDQ0LjRjMTEuMiAyLjIgMjIuNiA1IDI1IDYuNCA3IDMuNiAyNiAyMS44IDMwLjggMjkuNCA4LjYgMTMuNCAxMSA1NCA0LjYgNzctMi42IDkuNi0xOC44IDI3LjYtMzkuNCA0NC4yLTE1LjYgMTIuNC0xNyAxMy0yOS44IDE0LTcuNi44LTIyLjQgMi4yLTMzIDMuNi0yMi42IDIuNi00NS42IDEtNTMuOC0zLjgtMy4yLTItOC02LjgtMTAuOC0xMC44LTIuNi00LjItOC40LTEwLjQtMTIuOC0xMy44LTguMi02LjgtMTMuNC0xNi40LTE5LjQtMzctMy44LTEzLjItMi44LTIxLjggNS4yLTQ3LjYgMy4yLTEwLjQgNi0xNC42IDE3LjQtMjUuOCAxMi40LTEyLjIgMjMuOC0yMi4yIDMzLjItMjkuNiA0LTMgMzguNi05LjQgNTMuNC05LjggNSAwIDE4LjIgMS42IDI5LjQgMy42eiIvPjxwYXRoIGQ9Ik0zODcuMiA2MDZjLTEyLjIgMy44LTE4LjIgMTMuNC0xNSAyNC42IDUuOCAyMS4yIDI3LjggMjUuOCA0MC42IDguNiA2LjYtOC44IDcuOC0xNi4yIDQuMi0yNC00LjgtMTAuMi0xNS40LTEzLjQtMjkuOC05LjJ6Ii8+PC9zdmc+);
+    }
+    
+    
+    
+    
+    .footer-sns-github {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzguNCA3OGMtNi40IDEuNC0yNi40IDE0LjItMzYgMjIuOC04IDcuMi0yMiAyOS44LTI0LjQgMzkuMi0xLjYgNi40LTIgMTEzLjItMS42IDM2OCAuNiAyOTkuNCAxIDM1OS44IDMuNCAzNjQgMTEgMjAuMiAyMS42IDMyLjQgMzcuMiA0MyAxNS42IDEwLjYgMTcuMiAxMS4yIDM0LjIgMTMuMiAxMC42IDEuMiA2My40IDEuNiAxMjcuNiAxLjRsMTA5LjYtLjYgNi02LjggNi4yLTYuOC0xLjItMjUuMmMtLjgtMTUuOC0uMi0zMy40IDEuNC00Ny4yIDMtMjUuNCAxLjQtMzYuMi02LTQzLjItNS00LjYtNi4yLTQuOC0zMC42LTQuMi0yNy42LjgtMjQgMS42LTY4LjgtMTYtOC42LTMuNC0yMi42LTE4LTI4LjQtMjkuOC0xMS40LTIyLjgtMjctNDUtMzkuMi01NS42LTE0LTEyLjItMTkuOC0yMC44LTE5LjgtMjguNiAwLTExLjYgMTMuNi0xMi42IDMzLjItMi40IDE2LjYgOC44IDIwLjggMTIuNCA0MC44IDM2LjIgMjQuMiAyOC42IDMxIDMzLjYgNTQgMzkuNiAxNS4yIDQgNDIuMiAzIDUxLjQtMS44IDktNC42IDE4LTE1LjIgMjQuNC0yOS4yIDExLjQtMjQuMiA3LjQtMzEuMi0yMC42LTM2LjgtOS44LTItMjkuMi04LTQzLjQtMTMuNC00MC40LTE1LjgtNjQuNi0zNy40LTg1LjQtNzYuMi0xMS42LTIxLjgtMTUuNC0zMy0xOC4yLTUzLjYtNC4yLTMyLjItNC44LTYwLjItMS40LTg0IDMuNC0yMy44IDYuOC0zMi44IDIwLjItNTQgNC02IDguOC0xNS42IDExLTIxLjQgMy44LTEwIDMuOC0xMS42IDEtMzAtNS4yLTM0LjItMy4yLTUyLjQgNy42LTcwLjIgNy4yLTEyLjIgMTUtMTcuMiAyNC4yLTE1LjggMTIuOCAyLjIgNTIgMTcuNCA2Ni44IDI2LjIgMjYgMTUgMjkgMTUuNCA4Mi40IDcuMiAyNC42LTMuOCAzMy44LTQuMiA2MC0zLjIgMTcgLjYgNDEuNCAzIDU0IDUuMiAzOC40IDYuNiA0OS42IDUuMiA3My0xMCA2LjYtNC4yIDE3LjQtOS40IDI0LTExLjYgNi42LTIuMiAxNi01LjggMjEtOC4yIDEzLTYgMjgtNS42IDM1LjYuOCAxMi40IDEwLjQgMTguNiA0MS40IDE0LjQgNzEuNi00LjQgMzAuNi0zIDM5LjQgOC40IDUzLjggMy40IDQuNCAxMS4yIDE5LjIgMTcuNCAzMy4yTDc3NSA0NDN2NzhsLTEwIDI4Yy0xNS4yIDQzLjItMzYuOCA3My4yLTY2LjIgOTIuOC0xMy40IDguOC01NyAyNS40LTc2LjggMjktMjguMiA1LjItMzMuMiAxMi42LTIyIDMyLjIgMTEuMiAxOS40IDEyLjQgMzIuOCAxMS42IDEyOS42bC0uNiA4NS44IDUuNCA0LjZjMy42IDMgOS4yIDUuMiAxNiA2IDUuOC44IDYwLjIgMSAxMjAuNi42IDEwOC40LS42IDExMC4yLS42IDExOS01IDI0LTExLjYgNDAtMjcuNCA1MS42LTUwLjZsNS40LTExIC42LTM0N2MuNC0yMjMtLjItMzUzLjQtMS40LTM2NS0yLTE3LTIuNi0xOC42LTEzLTM0LTEwLjYtMTUuNC0yMi44LTI2LjItNDMuMi0zNy4yLTQuMi0yLjQtNjQuNi0yLjgtMzY2LTMuMi0xOTguNiAwLTM2NCAuNC0zNjcuNiAxLjR6Ii8+PC9zdmc+);
+    }
+    
+    
+    
+    .footer-sns-zhihu {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgY2xhc3M9Imljb24iIHZpZXdCb3g9IjAgMCAxMDI0IDEwMjQiPjxwYXRoIGQ9Ik0xMzYuOCA3OC44Yy04LjYgMi44LTI0IDEyLjQtMzMuNiAyMS04LjYgNy44LTIxLjQgMjcuOC0yNC40IDM3LjgtNC4yIDE0LTQgNzIzLjQgMCA3MzMuNCA4LjYgMjAuNiAzNi44IDQ4LjYgNTYgNTUuNiA5IDMuNCA3NDcuNCAzLjQgNzU2LjQgMCAxOS44LTcuMiA0OS0zNi42IDU2LTU2LjIgMi4yLTYgMi42LTc1LjYgMi44LTM2Ni40IDAtMjMzLjgtLjYtMzYxLjQtMi0zNjYtMS4yLTMuOC02LjYtMTMuOC0xMi4yLTIyLjItOC4yLTEyLjItMTMuNC0xNy40LTI1LjgtMjUuNi04LjQtNS44LTE5LTExLjQtMjMuMi0xMi4yLTQuNi0xLjItMTYzLjItMS44LTM3NC44LTEuOC0yOTMgMC0zNjguNi42LTM3NS4yIDIuNnptMTkwIDE0NS42YzUuNCA3LjYgNCAxNy40LTQuOCAzMS42LTkuOCAxNi0xMC44IDI3LjQtMyAzNSAyLjYgMi44IDYuNCA1IDguNCA1czM3LjguNCA3OS42LjZjNjggLjQgNzYuNi44IDgyLjQgMy44IDkuMiA1IDEyLjYgMTEgMTIuNiAyMiAwIDctMS4yIDEwLjgtNC44IDE1bC00LjggNS40LTM4IC4yYy01My44IDAtNTMuOCAwLTU1LjQgNTEuMi0uNiAxOC0xLjYgNDIuOC0yLjIgNTUtMS4yIDIyLjguNiAzMS42IDcuNiAzNi4yIDEuNC44IDIyLjIgMiA0NiAyLjZsNDMuMiAxIDguOCA2YzE1LjQgMTAuOCAxNy44IDI5LjIgNSAzNy01LjggMy42LTEwLjIgNC01MS44IDQtMzEgMC00NyAuOC01MC42IDIuNC03IDMuMi0xNC4yIDE3LjYtMTcuMiAzNC40LTMuMiAxNi42LTEgMjEuOCA5LjYgMjUuMiAxMy40IDQuMiAyMS44IDExLjIgNDkgNDEuNCAzNSAzOC44IDM2LjYgNDEgNDEuOCA1OC44IDcgMjMuOCAyLjIgNDEuOC0xMS40IDQxLjgtNy42IDAtMTItMy0yMS0xNC42LTEzLjgtMTcuNC01NC40LTY1LjgtNjItNzMuOC0xNS4yLTE2LTI5LjQtNS44LTM4LjggMjcuNC0xLjggNi42LTguOCAyMy4yLTE1LjYgMzctMTAuOCAyMi0xNCAyNi44LTI3LjQgMzkuNi0xOS42IDE5LjItMjYuNCAyMy01My42IDI5LjYtMjcuMiA2LjQtMzcgNS42LTM4LTMuNi0xLTguNCA0LjQtMTYuNCAyMC0yOSAxNi0xMyAzNi44LTM2LjYgNDUuMi01MS40IDMtNS4yIDguMi0xMy44IDExLjYtMTkgMy40LTUgMTEuOC0yMC40IDE4LjYtMzQuMiAxMC0yMCAxMy42LTI5LjQgMTcuMi00NyAyLjYtMTIuMiA2LjItMjUuNCA3LjgtMjkuNCA0LTkuNCA0LTIxLjQuMi0yNy01LjItNy40LTE2LTguOC02Mi42LTguNC01MC40LjQtNTUuMi0uOC01Ny42LTEzLjItMS44LTEwLjQgNS44LTI0LjQgMTYuMi0yOS44IDcuNC0zLjggMTEuOC00LjIgNTYuMi00LjhsNDguNC0uOCA0LjYtNWM0LjgtNSA0LjgtNSA1LTYxLjYgMC0zNS4yLS44LTU5LjItMi02My4yLTMuOC0xMS4yLTExLTE0LjgtMzAuMi0xNC44cy0yMS40IDEuNC0zMS4yIDE4LjJjLTguMiAxNC40LTIwLjYgMjguOC0zMy4yIDM4LjgtMTMuMiAxMC40LTIxLjYgMTMtMjggOS04LjQtNS42LTUuMi0yMy4yIDguMi00My4yIDQtNi40IDkuMi0xOC42IDEyLjItMjkuNiAzLTEwLjIgNy40LTIzLjIgMTAtMjkgMi40LTUuNiA2LTE2LjggOC0yNC42IDUuNi0yMy42IDI0LTUwLjggMzkuNC01OC40IDExLjItNS40IDE4LjYtNS40IDIyLjQuMnptNDUyIDY4LjJjMTEuOCA3LjggMTEuNC0uOCAxMC44IDIxNi0uNiAxODEtLjggMTk4LjgtNCAyMDMtNy42IDEwLjgtOS44IDExLjQtNTMuNiAxMi40bC00MSAxLTE0IDcuOGMtNy42IDQuMi0yMS4yIDEzLTI5LjggMTkuNC0yNS44IDE5LjItMzUgMTkuOC00My40IDMuMi0xMS44LTIzLjItMjMuNi0zMy4yLTM5LjQtMzMuNC04LjggMC0xMy42LTIuOC0xNy4yLTkuOC0yLjYtNC44LTMtMzMuOC0yLjYtMjA4LjguNC0xOTkuOC40LTIwMyA0LjQtMjA3LjQgMi4yLTIuNCA1LjgtNS4yIDgtNi4yIDIuMi0uOCA1MS44LTEuNCAxMTAtMS4yIDk5IC40IDEwNi42LjYgMTExLjggNHoiLz48cGF0aCBkPSJNNjA2LjggMzM3LjRjLTIuNC40LTYuNCAzLTkgNS44bC00LjggNS4yLS42IDE1Ni40LS40IDE1Ni40IDYuNCA5LjRjMy42IDUuMiA5LjggMTUuMiAxMy42IDIxLjggOCAxNC4yIDE2LjggMjAuNiAyNS42IDE4LjYgMy4yLS42IDEzLjgtNyAyMy42LTE0LjIgMjMtMTcgMjcuOC0xOSA1MC4yLTIwLjIgMTYuNC0xIDE5LjItMS44IDIzLjYtNi4yIDIuOC0yLjggNS02LjQgNS4yLTguMlY1MDUuNmMwLTExNi0uNi0xNTQuNC0yLjYtMTU4LjYtNC44LTEwLjQtOC40LTExLTcwLTEwLjgtMzEuMi4yLTU4LjYuOC02MC44IDEuMnoiLz48L3N2Zz4=);
+    }
+    
+    
+    
+</style>
+
+        
+        <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+
+
+        <script>lsloader.load("js/jquery.min.js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==")</script>
+    
+    
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Analytics -->
+    
+
+    <!-- Custom Head -->
+    
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#工具类函数的封装"><span class="post-toc-number">1.</span> <span class="post-toc-text">工具类函数的封装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-Array"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. Array</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-arrayEqual"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">1.1 arrayEqual</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Class"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2. Class</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-addClass"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">2.1 addClass</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-hasClass"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.2 hasClass</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3-removeClass"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">2.3 removeClass</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-Cookie"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3. Cookie</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-getCookie"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">3.1 getCookie</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-removeCookie"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">3.2 removeCookie</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3-setCookie"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">3.3 setCookie</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-Device"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4. Device</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-getExplore"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">4.1 getExplore</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-getOS"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">4.2 getOS</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-Dom"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">5.Dom</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-1-getScrollTop"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">5.1 getScrollTop</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-2-offset"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">5.2 offset</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-3-scrollTo"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">5.3 scrollTo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-4-setScrollTop"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">5.4 setScrollTop</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-Keycode"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">6.Keycode</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-1-getKeyName"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">6.1 getKeyName</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-Object"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">7.Object</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-1-deepClone"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">7.1 deepClone</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-2-isEmptyObject"><span class="post-toc-number">1.7.2.</span> <span class="post-toc-text">7.2 isEmptyObject</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-Random"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">8.Random</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-1-randomColor"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">8.1 randomColor</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-2-randomNum"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">8.2 randomNum</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-Regexp"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">9.Regexp</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-1-isEmail"><span class="post-toc-number">1.9.1.</span> <span class="post-toc-text">9.1 isEmail</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-2-isIdCard"><span class="post-toc-number">1.9.2.</span> <span class="post-toc-text">9.2 isIdCard</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-isPhoneNum"><span class="post-toc-number">1.9.3.</span> <span class="post-toc-text">9.3 isPhoneNum</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-4-isUrl"><span class="post-toc-number">1.9.4.</span> <span class="post-toc-text">9.4 isUrl</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-String"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">10.String</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-1-digitUppercase"><span class="post-toc-number">1.10.1.</span> <span class="post-toc-text">10.1 digitUppercase</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-Support"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">11.Support</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-isSupportWebP"><span class="post-toc-number">1.11.1.</span> <span class="post-toc-text">11.1 isSupportWebP</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-Time"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">12.Time</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-1-formatPassTime"><span class="post-toc-number">1.12.1.</span> <span class="post-toc-text">12.1 formatPassTime</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-2-formatRemainTime"><span class="post-toc-number">1.12.2.</span> <span class="post-toc-text">12.2 formatRemainTime</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-Url"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">13. Url</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-1-parseQueryString"><span class="post-toc-number">1.13.1.</span> <span class="post-toc-text">13.1 parseQueryString</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-2-stringfyQueryString"><span class="post-toc-number">1.13.2.</span> <span class="post-toc-text">13.2 stringfyQueryString</span></a></li></ol></li></ol></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+    
+
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                前端工具类函数的封装
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>JasonFeng</strong>
+        <span>12月 18, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/封装/">封装</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=前端工具类函数的封装&url=http://yoursite.com/2017/12/18/前端工具类函数的封装/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=前端工具类函数的封装&url=http://yoursite.com/2017/12/18/前端工具类函数的封装/index.html&via=JasonFeng" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/12/18/前端工具类函数的封装/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2017/12/18/前端工具类函数的封装/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>封装记录日常开发中用到的工具栏函数，方便以后复用。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="工具类函数的封装"><a href="#工具类函数的封装" class="headerlink" title="工具类函数的封装"></a>工具类函数的封装</h1><h2 id="1-Array"><a href="#1-Array" class="headerlink" title="1. Array"></a>1. Array</h2><h3 id="1-1-arrayEqual"><a href="#1-1-arrayEqual" class="headerlink" title="1.1 arrayEqual"></a>1.1 arrayEqual</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 判断两个数组是否相等</div><div class="line"> * @param &#123;Array&#125; arr1</div><div class="line"> * @param &#123;Array&#125; arr2</div><div class="line"> * @return &#123;Boolean&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">arrayEqual</span>(<span class="params">arr1, arr2</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (arr1 === arr2) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (arr1.length != arr2.length) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr1.length; ++i) &#123;</div><div class="line">        <span class="keyword">if</span> (arr1[i] !== arr2[i]) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-Class"><a href="#2-Class" class="headerlink" title="2. Class"></a>2. Class</h2><h3 id="2-1-addClass"><a href="#2-1-addClass" class="headerlink" title="2.1 addClass"></a>2.1 addClass</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc   为元素添加class</div><div class="line"> * @param  &#123;HTMLElement&#125; ele</div><div class="line"> * @param  &#123;String&#125; cls</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> hasClass = <span class="built_in">require</span>(<span class="string">'./hasClass'</span>)</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addClass</span>(<span class="params">ele, cls</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!hasClass(ele, cls)) &#123;</div><div class="line">        ele.className += <span class="string">` <span class="subst">$&#123;cls&#125;</span>`</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-2-hasClass"><a href="#2-2-hasClass" class="headerlink" title="2.2 hasClass"></a>2.2 hasClass</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 判断元素是否有某个class</div><div class="line"> * @param &#123;HTMLElement&#125; ele</div><div class="line"> * @param &#123;String&#125; cls</div><div class="line"> * @return &#123;Boolean&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasClass</span>(<span class="params">ele, cls</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'(\\s|^)'</span> + cls + <span class="string">'(\\s|$)'</span>)).test(ele.className)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-3-removeClass"><a href="#2-3-removeClass" class="headerlink" title="2.3 removeClass"></a>2.3 removeClass</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 为元素移除class</div><div class="line"> * @param &#123;HTMLElement&#125; ele</div><div class="line"> * @param &#123;String&#125; cls</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> hasClass = <span class="built_in">require</span>(<span class="string">'./hasClass'</span>)</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeClass</span>(<span class="params">ele, cls</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (hasClass(ele, cls)) &#123;</div><div class="line">        <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">`(\\s|^)<span class="subst">$&#123;cls&#125;</span>(\\s|$)`</span>)</div><div class="line">        ele.className = ele.className.replace(reg, <span class="string">' '</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-Cookie"><a href="#3-Cookie" class="headerlink" title="3. Cookie"></a>3. Cookie</h2><h3 id="3-1-getCookie"><a href="#3-1-getCookie" class="headerlink" title="3.1 getCookie"></a>3.1 getCookie</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 根据name读取cookie</div><div class="line"> * @param  &#123;String&#125; name</div><div class="line"> * @return &#123;String&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> arr = <span class="built_in">document</span>.cookie.replace(<span class="regexp">/\s/g</span>, <span class="string">""</span>).split(<span class="string">';'</span>)</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> tempArr = arr[i].split(<span class="string">'='</span>)</div><div class="line">        <span class="keyword">if</span> (tempArr[<span class="number">0</span>] == name) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">decodeURIComponent</span>(tempArr[<span class="number">1</span>])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="string">''</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-2-removeCookie"><a href="#3-2-removeCookie" class="headerlink" title="3.2 removeCookie"></a>3.2 removeCookie</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> setCookie = <span class="built_in">require</span>(<span class="string">'./setCookie'</span>)</div><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 根据name删除cookie</div><div class="line"> * @param  &#123;String&#125; name</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeCookie</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="comment">// 设置已过期，系统会立刻删除cookie</span></div><div class="line">    setCookie(name, <span class="string">'1'</span>, <span class="number">-1</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-3-setCookie"><a href="#3-3-setCookie" class="headerlink" title="3.3 setCookie"></a>3.3 setCookie</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc  设置Cookie</div><div class="line"> * @param &#123;String&#125; name</div><div class="line"> * @param &#123;String&#125; value</div><div class="line"> * @param &#123;Number&#125; days</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">name, value, days</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line">    date.setDate(date.getDate() + days)</div><div class="line">    <span class="built_in">document</span>.cookie = <span class="string">`<span class="subst">$&#123;name&#125;</span>=<span class="subst">$&#123;value&#125;</span>;expires=<span class="subst">$&#123;date&#125;</span>`</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-Device"><a href="#4-Device" class="headerlink" title="4. Device"></a>4. Device</h2><h3 id="4-1-getExplore"><a href="#4-1-getExplore" class="headerlink" title="4.1 getExplore"></a>4.1 getExplore</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 获取浏览器类型和版本</div><div class="line"> * @return &#123;String&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getExplore</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> sys = &#123;&#125;,</div><div class="line">        ua = navigator.userAgent.toLowerCase(),</div><div class="line">        s</div><div class="line">    (s = ua.match(<span class="regexp">/rv:([\d.]+)\) like gecko/</span>)) ? sys.ie = s[<span class="number">1</span>]:</div><div class="line">        (s = ua.match(<span class="regexp">/msie ([\d\.]+)/</span>)) ? sys.ie = s[<span class="number">1</span>] :</div><div class="line">        (s = ua.match(<span class="regexp">/edge\/([\d\.]+)/</span>)) ? sys.edge = s[<span class="number">1</span>] :</div><div class="line">        (s = ua.match(<span class="regexp">/firefox\/([\d\.]+)/</span>)) ? sys.firefox = s[<span class="number">1</span>] :</div><div class="line">        (s = ua.match(<span class="regexp">/(?:opera|opr).([\d\.]+)/</span>)) ? sys.opera = s[<span class="number">1</span>] :</div><div class="line">        (s = ua.match(<span class="regexp">/chrome\/([\d\.]+)/</span>)) ? sys.chrome = s[<span class="number">1</span>] :</div><div class="line">        (s = ua.match(<span class="regexp">/version\/([\d\.]+).*safari/</span>)) ? sys.safari = s[<span class="number">1</span>] : <span class="number">0</span></div><div class="line">    <span class="comment">// 根据关系进行判断</span></div><div class="line">    <span class="keyword">if</span> (sys.ie) &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="string">`IE: <span class="subst">$&#123;sys.ie&#125;</span>`</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (sys.edge) &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="string">`EDGE: <span class="subst">$&#123;sys.edge&#125;</span>`</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (sys.firefox) &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="string">`Firefox: <span class="subst">$&#123;sys.firefox&#125;</span>`</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (sys.chrome) &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="string">`Chrome: <span class="subst">$&#123;sys.chrome&#125;</span>`</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (sys.opera) &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="string">`Opera: <span class="subst">$&#123;sys.opera&#125;</span>`</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (sys.safari) &#123;</div><div class="line">        <span class="keyword">return</span> (<span class="string">`Safari: <span class="subst">$&#123;sys.safari&#125;</span>`</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="string">'Unkonwn'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="4-2-getOS"><a href="#4-2-getOS" class="headerlink" title="4.2 getOS"></a>4.2 getOS</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> * @desc 获取操作系统类型</div><div class="line"> * @return &#123;String&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getOS</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> userAgent = <span class="string">'navigator'</span> <span class="keyword">in</span> <span class="built_in">window</span> &amp;&amp; <span class="string">'userAgent'</span> <span class="keyword">in</span> navigator &amp;&amp; navigator.userAgent.toLowerCase() || <span class="string">''</span></div><div class="line">    <span class="keyword">var</span> vendor = <span class="string">'navigator'</span> <span class="keyword">in</span> <span class="built_in">window</span> &amp;&amp; <span class="string">'vendor'</span> <span class="keyword">in</span> navigator &amp;&amp; navigator.vendor.toLowerCase() || <span class="string">''</span></div><div class="line">    <span class="keyword">var</span> appVersion = <span class="string">'navigator'</span> <span class="keyword">in</span> <span class="built_in">window</span> &amp;&amp; <span class="string">'appVersion'</span> <span class="keyword">in</span> navigator &amp;&amp; navigator.appVersion.toLowerCase() || <span class="string">''</span></div><div class="line">    <span class="keyword">if</span> (<span class="regexp">/mac/i</span>.test(appVersion)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'MacOSX'</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="regexp">/win/i</span>.test(appVersion)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'windows'</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="regexp">/linux/i</span>.test(appVersion)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'linux'</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="regexp">/iphone/i</span>.test(userAgent) || <span class="regexp">/ipad/i</span>.test(userAgent) || <span class="regexp">/ipod/i</span>.test(userAgent)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'ios'</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="regexp">/android/i</span>.test(userAgent)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'android'</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="regexp">/win/i</span>.test(appVersion) &amp;&amp; <span class="regexp">/phone/i</span>.test(userAgent)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'windowsPhone'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5-Dom"><a href="#5-Dom" class="headerlink" title="5.Dom"></a>5.Dom</h2><h3 id="5-1-getScrollTop"><a href="#5-1-getScrollTop" class="headerlink" title="5.1 getScrollTop"></a>5.1 getScrollTop</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 获取滚动条距顶部的距离</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getScrollTop</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (<span class="built_in">document</span>.documentElement &amp;&amp; <span class="built_in">document</span>.documentElement.scrollTop) || <span class="built_in">document</span>.body.scrollTop</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="5-2-offset"><a href="#5-2-offset" class="headerlink" title="5.2 offset"></a>5.2 offset</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc  获取一个元素的距离文档(document)的位置，类似jQ中的offset()</div><div class="line"> * @param &#123;HTMLElement&#125; ele</div><div class="line"> * @returns &#123; &#123;left: number, top: number&#125; &#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">offset</span>(<span class="params">ele</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> pos = &#123;</div><div class="line">        <span class="attr">left</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">top</span>: <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (ele) &#123;</div><div class="line">        pos.left += ele.offsetLeft</div><div class="line">        pos.top += ele.offsetTop</div><div class="line">        ele = ele.offsetParent</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> pos</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="5-3-scrollTo"><a href="#5-3-scrollTo" class="headerlink" title="5.3 scrollTo"></a>5.3 scrollTo</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> getScrollTop = <span class="built_in">require</span>(<span class="string">'./getScrollTop'</span>)</div><div class="line"><span class="keyword">var</span> setScrollTop = <span class="built_in">require</span>(<span class="string">'./setScrollTop'</span>)</div><div class="line"><span class="keyword">var</span> requestAnimFrame = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">window</span>.requestAnimationFrame ||</div><div class="line">        <span class="built_in">window</span>.webkitRequestAnimationFrame ||</div><div class="line">        <span class="built_in">window</span>.mozRequestAnimationFrame ||</div><div class="line">        <span class="function"><span class="keyword">function</span> (<span class="params">callback</span>) </span>&#123;</div><div class="line">            <span class="built_in">window</span>.setTimeout(callback, <span class="number">1000</span> / <span class="number">60</span>)</div><div class="line">        &#125;</div><div class="line">&#125;)()</div><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc  在$&#123;duration&#125;时间内，滚动条平滑滚动到$&#123;to&#125;指定位置</div><div class="line"> * @param &#123;Number&#125; to</div><div class="line"> * @param &#123;Number&#125; duration</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">scrollTo</span>(<span class="params">to, duration</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (duration &lt; <span class="number">0</span>) &#123;</div><div class="line">        setScrollTop(to)</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> diff = to - getScrollTop()</div><div class="line">    <span class="keyword">if</span> (diff === <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> step = diff / duration * <span class="number">10</span></div><div class="line">    requestAnimationFrame(</div><div class="line">        <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (<span class="built_in">Math</span>.abs(step) &gt; <span class="built_in">Math</span>.abs(diff)) &#123;</div><div class="line">                setScrollTop(getScrollTop() + diff)</div><div class="line">                <span class="keyword">return</span></div><div class="line">            &#125;</div><div class="line">            setScrollTop(getScrollTop() + step)</div><div class="line">            <span class="keyword">if</span> (diff &gt; <span class="number">0</span> &amp;&amp; getScrollTop() &gt;= to || diff &lt; <span class="number">0</span> &amp;&amp; getScrollTop() &lt;= to) &#123;</div><div class="line">                <span class="keyword">return</span></div><div class="line">            &#125;</div><div class="line">            scrollTo(to, duration - <span class="number">16</span>)</div><div class="line">        &#125;</div><div class="line">    )</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="5-4-setScrollTop"><a href="#5-4-setScrollTop" class="headerlink" title="5.4 setScrollTop"></a>5.4 setScrollTop</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 设置滚动条距顶部的距离</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setScrollTop</span>(<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, value)</div><div class="line">    <span class="keyword">return</span> value</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="6-Keycode"><a href="#6-Keycode" class="headerlink" title="6.Keycode"></a>6.Keycode</h2><h3 id="6-1-getKeyName"><a href="#6-1-getKeyName" class="headerlink" title="6.1 getKeyName"></a>6.1 getKeyName</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> keyCodeMap = &#123;</div><div class="line">    <span class="number">8</span>: <span class="string">'Backspace'</span>,</div><div class="line">    <span class="number">9</span>: <span class="string">'Tab'</span>,</div><div class="line">    <span class="number">13</span>: <span class="string">'Enter'</span>,</div><div class="line">    <span class="number">16</span>: <span class="string">'Shift'</span>,</div><div class="line">    <span class="number">17</span>: <span class="string">'Ctrl'</span>,</div><div class="line">    <span class="number">18</span>: <span class="string">'Alt'</span>,</div><div class="line">    <span class="number">19</span>: <span class="string">'Pause'</span>,</div><div class="line">    <span class="number">20</span>: <span class="string">'Caps Lock'</span>,</div><div class="line">    <span class="number">27</span>: <span class="string">'Escape'</span>,</div><div class="line">    <span class="number">32</span>: <span class="string">'Space'</span>,</div><div class="line">    <span class="number">33</span>: <span class="string">'Page Up'</span>,</div><div class="line">    <span class="number">34</span>: <span class="string">'Page Down'</span>,</div><div class="line">    <span class="number">35</span>: <span class="string">'End'</span>,</div><div class="line">    <span class="number">36</span>: <span class="string">'Home'</span>,</div><div class="line">    <span class="number">37</span>: <span class="string">'Left'</span>,</div><div class="line">    <span class="number">38</span>: <span class="string">'Up'</span>,</div><div class="line">    <span class="number">39</span>: <span class="string">'Right'</span>,</div><div class="line">    <span class="number">40</span>: <span class="string">'Down'</span>,</div><div class="line">    <span class="number">42</span>: <span class="string">'Print Screen'</span>,</div><div class="line">    <span class="number">45</span>: <span class="string">'Insert'</span>,</div><div class="line">    <span class="number">46</span>: <span class="string">'Delete'</span>,</div><div class="line"></div><div class="line">    <span class="number">48</span>: <span class="string">'0'</span>,</div><div class="line">    <span class="number">49</span>: <span class="string">'1'</span>,</div><div class="line">    <span class="number">50</span>: <span class="string">'2'</span>,</div><div class="line">    <span class="number">51</span>: <span class="string">'3'</span>,</div><div class="line">    <span class="number">52</span>: <span class="string">'4'</span>,</div><div class="line">    <span class="number">53</span>: <span class="string">'5'</span>,</div><div class="line">    <span class="number">54</span>: <span class="string">'6'</span>,</div><div class="line">    <span class="number">55</span>: <span class="string">'7'</span>,</div><div class="line">    <span class="number">56</span>: <span class="string">'8'</span>,</div><div class="line">    <span class="number">57</span>: <span class="string">'9'</span>,</div><div class="line"></div><div class="line">    <span class="number">65</span>: <span class="string">'A'</span>,</div><div class="line">    <span class="number">66</span>: <span class="string">'B'</span>,</div><div class="line">    <span class="number">67</span>: <span class="string">'C'</span>,</div><div class="line">    <span class="number">68</span>: <span class="string">'D'</span>,</div><div class="line">    <span class="number">69</span>: <span class="string">'E'</span>,</div><div class="line">    <span class="number">70</span>: <span class="string">'F'</span>,</div><div class="line">    <span class="number">71</span>: <span class="string">'G'</span>,</div><div class="line">    <span class="number">72</span>: <span class="string">'H'</span>,</div><div class="line">    <span class="number">73</span>: <span class="string">'I'</span>,</div><div class="line">    <span class="number">74</span>: <span class="string">'J'</span>,</div><div class="line">    <span class="number">75</span>: <span class="string">'K'</span>,</div><div class="line">    <span class="number">76</span>: <span class="string">'L'</span>,</div><div class="line">    <span class="number">77</span>: <span class="string">'M'</span>,</div><div class="line">    <span class="number">78</span>: <span class="string">'N'</span>,</div><div class="line">    <span class="number">79</span>: <span class="string">'O'</span>,</div><div class="line">    <span class="number">80</span>: <span class="string">'P'</span>,</div><div class="line">    <span class="number">81</span>: <span class="string">'Q'</span>,</div><div class="line">    <span class="number">82</span>: <span class="string">'R'</span>,</div><div class="line">    <span class="number">83</span>: <span class="string">'S'</span>,</div><div class="line">    <span class="number">84</span>: <span class="string">'T'</span>,</div><div class="line">    <span class="number">85</span>: <span class="string">'U'</span>,</div><div class="line">    <span class="number">86</span>: <span class="string">'V'</span>,</div><div class="line">    <span class="number">87</span>: <span class="string">'W'</span>,</div><div class="line">    <span class="number">88</span>: <span class="string">'X'</span>,</div><div class="line">    <span class="number">89</span>: <span class="string">'Y'</span>,</div><div class="line">    <span class="number">90</span>: <span class="string">'Z'</span>,</div><div class="line"></div><div class="line">    <span class="number">91</span>: <span class="string">'Windows'</span>,</div><div class="line">    <span class="number">93</span>: <span class="string">'Right Click'</span>,</div><div class="line"></div><div class="line">    <span class="number">96</span>: <span class="string">'Numpad 0'</span>,</div><div class="line">    <span class="number">97</span>: <span class="string">'Numpad 1'</span>,</div><div class="line">    <span class="number">98</span>: <span class="string">'Numpad 2'</span>,</div><div class="line">    <span class="number">99</span>: <span class="string">'Numpad 3'</span>,</div><div class="line">    <span class="number">100</span>: <span class="string">'Numpad 4'</span>,</div><div class="line">    <span class="number">101</span>: <span class="string">'Numpad 5'</span>,</div><div class="line">    <span class="number">102</span>: <span class="string">'Numpad 6'</span>,</div><div class="line">    <span class="number">103</span>: <span class="string">'Numpad 7'</span>,</div><div class="line">    <span class="number">104</span>: <span class="string">'Numpad 8'</span>,</div><div class="line">    <span class="number">105</span>: <span class="string">'Numpad 9'</span>,</div><div class="line">    <span class="number">106</span>: <span class="string">'Numpad *'</span>,</div><div class="line">    <span class="number">107</span>: <span class="string">'Numpad +'</span>,</div><div class="line">    <span class="number">109</span>: <span class="string">'Numpad -'</span>,</div><div class="line">    <span class="number">110</span>: <span class="string">'Numpad .'</span>,</div><div class="line">    <span class="number">111</span>: <span class="string">'Numpad /'</span>,</div><div class="line"></div><div class="line">    <span class="number">112</span>: <span class="string">'F1'</span>,</div><div class="line">    <span class="number">113</span>: <span class="string">'F2'</span>,</div><div class="line">    <span class="number">114</span>: <span class="string">'F3'</span>,</div><div class="line">    <span class="number">115</span>: <span class="string">'F4'</span>,</div><div class="line">    <span class="number">116</span>: <span class="string">'F5'</span>,</div><div class="line">    <span class="number">117</span>: <span class="string">'F6'</span>,</div><div class="line">    <span class="number">118</span>: <span class="string">'F7'</span>,</div><div class="line">    <span class="number">119</span>: <span class="string">'F8'</span>,</div><div class="line">    <span class="number">120</span>: <span class="string">'F9'</span>,</div><div class="line">    <span class="number">121</span>: <span class="string">'F10'</span>,</div><div class="line">    <span class="number">122</span>: <span class="string">'F11'</span>,</div><div class="line">    <span class="number">123</span>: <span class="string">'F12'</span>,</div><div class="line"></div><div class="line">    <span class="number">144</span>: <span class="string">'Num Lock'</span>,</div><div class="line">    <span class="number">145</span>: <span class="string">'Scroll Lock'</span>,</div><div class="line">    <span class="number">182</span>: <span class="string">'My Computer'</span>,</div><div class="line">    <span class="number">183</span>: <span class="string">'My Calculator'</span>,</div><div class="line">    <span class="number">186</span>: <span class="string">';'</span>,</div><div class="line">    <span class="number">187</span>: <span class="string">'='</span>,</div><div class="line">    <span class="number">188</span>: <span class="string">','</span>,</div><div class="line">    <span class="number">189</span>: <span class="string">'-'</span>,</div><div class="line">    <span class="number">190</span>: <span class="string">'.'</span>,</div><div class="line">    <span class="number">191</span>: <span class="string">'/'</span>,</div><div class="line">    <span class="number">192</span>: <span class="string">'`'</span>,</div><div class="line">    <span class="number">219</span>: <span class="string">'['</span>,</div><div class="line">    <span class="number">220</span>: <span class="string">'\\'</span>,</div><div class="line">    <span class="number">221</span>: <span class="string">']'</span>,</div><div class="line">    <span class="number">222</span>: <span class="string">'\''</span></div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 根据keycode获得键名</div><div class="line"> * @param  &#123;Number&#125; keycode</div><div class="line"> * @return &#123;String&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getKeyName</span>(<span class="params">keycode</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (keyCodeMap[keycode]) &#123;</div><div class="line">        <span class="keyword">return</span> keyCodeMap[keycode]</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">`Unknow Key(Key Code: <span class="subst">$&#123;keycode&#125;</span>)`</span>)</div><div class="line">        <span class="keyword">return</span> <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="7-Object"><a href="#7-Object" class="headerlink" title="7.Object"></a>7.Object</h2><h3 id="7-1-deepClone"><a href="#7-1-deepClone" class="headerlink" title="7.1 deepClone"></a>7.1 deepClone</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 深拷贝，支持常见类型</div><div class="line"> * @param &#123;Any&#125; values</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">values</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> copy</div><div class="line">    <span class="keyword">if</span> (<span class="literal">null</span> == values || <span class="string">"object"</span> != <span class="keyword">typeof</span> values) &#123;</div><div class="line">        <span class="keyword">return</span> values</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (values <span class="keyword">instanceof</span> <span class="built_in">Date</span>) &#123;</div><div class="line">        copy = <span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line">        copy.setTime(values.getTime())</div><div class="line">        <span class="keyword">return</span> copy</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (values <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</div><div class="line">        copy = []</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = values.length; i &lt; len; i++) &#123;</div><div class="line">            copy[i] = deepClone(values[i])</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> copy</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (values <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123;</div><div class="line">        copy = &#123;&#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> values) &#123;</div><div class="line">            <span class="keyword">if</span> (values.hasOwnProperty(attr)) copy[attr] = deepClone(values[attr])</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> copy</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Unable to copy values! Its type isn't supported."</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="7-2-isEmptyObject"><a href="#7-2-isEmptyObject" class="headerlink" title="7.2 isEmptyObject"></a>7.2 isEmptyObject</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc   判断`obj`是否为空</div><div class="line"> * @param  &#123;Object&#125; obj</div><div class="line"> * @return &#123;Boolean&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmptyObject</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!obj || <span class="keyword">typeof</span> obj !== <span class="string">'object'</span> || <span class="built_in">Array</span>.isArray(obj)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> !<span class="built_in">Object</span>.keys(obj).length</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="8-Random"><a href="#8-Random" class="headerlink" title="8.Random"></a>8.Random</h2><h3 id="8-1-randomColor"><a href="#8-1-randomColor" class="headerlink" title="8.1 randomColor"></a>8.1 randomColor</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc 随机生成颜色</div><div class="line"> * @return &#123;String&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">randomColor</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'#'</span> + (<span class="string">'00000'</span> + (<span class="built_in">Math</span>.random() * <span class="number">0x1000000</span> &lt;&lt; <span class="number">0</span>).toString(<span class="number">16</span>)).slice(<span class="number">-6</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="8-2-randomNum"><a href="#8-2-randomNum" class="headerlink" title="8.2 randomNum"></a>8.2 randomNum</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> * @desc 生成指定范围随机数</div><div class="line"> * @param  &#123;Number&#125; min</div><div class="line"> * @param  &#123;Number&#125; max</div><div class="line"> * @return &#123;Number&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">randomNum</span>(<span class="params">min, max</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.floor(min + <span class="built_in">Math</span>.random() * (max - min))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="9-Regexp"><a href="#9-Regexp" class="headerlink" title="9.Regexp"></a>9.Regexp</h2><h3 id="9-1-isEmail"><a href="#9-1-isEmail" class="headerlink" title="9.1 isEmail"></a>9.1 isEmail</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc   判断是否为邮箱地址</div><div class="line"> * @param  &#123;String&#125;  str</div><div class="line"> * @return &#123;Boolean&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmail</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="regexp">/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/</span>.test(str)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="9-2-isIdCard"><a href="#9-2-isIdCard" class="headerlink" title="9.2 isIdCard"></a>9.2 isIdCard</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc  判断是否为身份证号</div><div class="line"> * @param  &#123;String|Number&#125; str</div><div class="line"> * @return &#123;Boolean&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isIdCard</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="regexp">/^(^[1-9]\d&#123;7&#125;((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d&#123;3&#125;$)|(^[1-9]\d&#123;5&#125;[1-9]\d&#123;3&#125;((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d&#123;4&#125;)|\d&#123;3&#125;[Xx])$)$/</span>.test(str)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="9-3-isPhoneNum"><a href="#9-3-isPhoneNum" class="headerlink" title="9.3 isPhoneNum"></a>9.3 isPhoneNum</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc   判断是否为手机号</div><div class="line"> * @param  &#123;String|Number&#125; str</div><div class="line"> * @return &#123;Boolean&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPhoneNum</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="regexp">/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]&#123;8&#125;$/</span>.test(str)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="9-4-isUrl"><a href="#9-4-isUrl" class="headerlink" title="9.4 isUrl"></a>9.4 isUrl</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc   判断是否为URL地址</div><div class="line"> * @param  &#123;String&#125; str</div><div class="line"> * @return &#123;Boolean&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isUrl</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="regexp">/[-a-zA-Z0-9@:%._\+~#=]&#123;2,256&#125;\.[a-z]&#123;2,6&#125;\b([-a-zA-Z0-9@:%_\+.~#?&amp;//=]*)/i</span>.test(str)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="10-String"><a href="#10-String" class="headerlink" title="10.String"></a>10.String</h2><h3 id="10-1-digitUppercase"><a href="#10-1-digitUppercase" class="headerlink" title="10.1 digitUppercase"></a>10.1 digitUppercase</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc   现金额转大写</div><div class="line"> * @param  &#123;Number&#125; n</div><div class="line"> * @return &#123;String&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">digitUppercase</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> fraction = [<span class="string">'角'</span>, <span class="string">'分'</span>]</div><div class="line">    <span class="keyword">var</span> digit = [</div><div class="line">        <span class="string">'零'</span>, <span class="string">'壹'</span>, <span class="string">'贰'</span>, <span class="string">'叁'</span>, <span class="string">'肆'</span>,</div><div class="line">        <span class="string">'伍'</span>, <span class="string">'陆'</span>, <span class="string">'柒'</span>, <span class="string">'捌'</span>, <span class="string">'玖'</span></div><div class="line">    ]</div><div class="line">    <span class="keyword">var</span> unit = [</div><div class="line">        [<span class="string">'元'</span>, <span class="string">'万'</span>, <span class="string">'亿'</span>],</div><div class="line">        [<span class="string">''</span>, <span class="string">'拾'</span>, <span class="string">'佰'</span>, <span class="string">'仟'</span>]</div><div class="line">    ]</div><div class="line">    <span class="keyword">var</span> head = n &lt; <span class="number">0</span> ? <span class="string">'欠'</span> : <span class="string">''</span></div><div class="line">    n = <span class="built_in">Math</span>.abs(n)</div><div class="line">    <span class="keyword">var</span> s = <span class="string">''</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; fraction.length; i++) &#123;</div><div class="line">        s += (digit[<span class="built_in">Math</span>.floor(n * <span class="number">10</span> * <span class="built_in">Math</span>.pow(<span class="number">10</span>, i)) % <span class="number">10</span>] + fraction[i]).replace(<span class="regexp">/零./</span>, <span class="string">''</span>)</div><div class="line">    &#125;</div><div class="line">    s = s || <span class="string">'整'</span></div><div class="line">    n = <span class="built_in">Math</span>.floor(n)</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; unit[<span class="number">0</span>].length &amp;&amp; n &gt; <span class="number">0</span>; i++) &#123;</div><div class="line">        <span class="keyword">var</span> p = <span class="string">''</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; unit[<span class="number">1</span>].length &amp;&amp; n &gt; <span class="number">0</span>; j++) &#123;</div><div class="line">            p = digit[n % <span class="number">10</span>] + unit[<span class="number">1</span>][j] + p</div><div class="line">            n = <span class="built_in">Math</span>.floor(n / <span class="number">10</span>)</div><div class="line">        &#125;</div><div class="line">        s = p.replace(<span class="regexp">/(零.)*零$/</span>, <span class="string">''</span>).replace(<span class="regexp">/^$/</span>, <span class="string">'零'</span>) + unit[<span class="number">0</span>][i] + s</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> head + s.replace(<span class="regexp">/(零.)*零元/</span>, <span class="string">'元'</span>)</div><div class="line">        .replace(<span class="regexp">/(零.)+/g</span>, <span class="string">'零'</span>)</div><div class="line">        .replace(<span class="regexp">/^整$/</span>, <span class="string">'零元整'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="11-Support"><a href="#11-Support" class="headerlink" title="11.Support"></a>11.Support</h2><h3 id="11-1-isSupportWebP"><a href="#11-1-isSupportWebP" class="headerlink" title="11.1 isSupportWebP"></a>11.1 isSupportWebP</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> * @desc 判断浏览器是否支持webP格式图片</div><div class="line"> * @return &#123;Boolean&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isSupportWebP</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> !![].map &amp;&amp; <span class="built_in">document</span>.createElement(<span class="string">'canvas'</span>).toDataURL(<span class="string">'image/webp'</span>).indexOf(<span class="string">'data:image/webp'</span>) == <span class="number">0</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="12-Time"><a href="#12-Time" class="headerlink" title="12.Time"></a>12.Time</h2><h3 id="12-1-formatPassTime"><a href="#12-1-formatPassTime" class="headerlink" title="12.1 formatPassTime"></a>12.1 formatPassTime</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc   格式化$&#123;startTime&#125;距现在的已过时间</div><div class="line"> * @param  &#123;Date&#125; startTime</div><div class="line"> * @return &#123;String&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatPassTime</span>(<span class="params">startTime</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> currentTime = <span class="built_in">Date</span>.parse(<span class="keyword">new</span> <span class="built_in">Date</span>()),</div><div class="line">        time = currentTime - startTime,</div><div class="line">        day = <span class="built_in">parseInt</span>(time / (<span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span>)),</div><div class="line">        hour = <span class="built_in">parseInt</span>(time / (<span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span>)),</div><div class="line">        min = <span class="built_in">parseInt</span>(time / (<span class="number">1000</span> * <span class="number">60</span>)),</div><div class="line">        month = <span class="built_in">parseInt</span>(day / <span class="number">30</span>),</div><div class="line">        year = <span class="built_in">parseInt</span>(month / <span class="number">12</span>)</div><div class="line">    <span class="keyword">if</span> (year) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;year&#125;</span>年前`</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (month) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;month&#125;</span>个月前`</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (day) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;day&#125;</span>天前`</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (hour) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;hour&#125;</span>小时前`</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (min) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;min&#125;</span>分钟前`</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'刚刚'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="12-2-formatRemainTime"><a href="#12-2-formatRemainTime" class="headerlink" title="12.2 formatRemainTime"></a>12.2 formatRemainTime</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> *</div><div class="line"> * @desc   格式化现在距$&#123;endTime&#125;的剩余时间</div><div class="line"> * @param  &#123;Date&#125; endTime</div><div class="line"> * @return &#123;String&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatRemainTime</span>(<span class="params">endTime</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> startDate = <span class="keyword">new</span> <span class="built_in">Date</span>() <span class="comment">//开始时间</span></div><div class="line">    <span class="keyword">var</span> endDate = <span class="keyword">new</span> <span class="built_in">Date</span>(endTime) <span class="comment">//结束时间</span></div><div class="line">    <span class="keyword">var</span> t = endDate.getTime() - startDate.getTime() <span class="comment">//时间差</span></div><div class="line">    <span class="keyword">var</span> d = <span class="number">0</span>,</div><div class="line">        h = <span class="number">0</span>,</div><div class="line">        m = <span class="number">0</span>,</div><div class="line">        s = <span class="number">0</span></div><div class="line">    <span class="keyword">if</span> (t &gt;= <span class="number">0</span>) &#123;</div><div class="line">        d = <span class="built_in">Math</span>.floor(t / <span class="number">1000</span> / <span class="number">3600</span> / <span class="number">24</span>)</div><div class="line">        h = <span class="built_in">Math</span>.floor(t / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> % <span class="number">24</span>)</div><div class="line">        m = <span class="built_in">Math</span>.floor(t / <span class="number">1000</span> / <span class="number">60</span> % <span class="number">60</span>)</div><div class="line">        s = <span class="built_in">Math</span>.floor(t / <span class="number">1000</span> % <span class="number">60</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;d&#125;</span>天 <span class="subst">$&#123;h&#125;</span>小时 <span class="subst">$&#123;m&#125;</span>分钟 <span class="subst">$&#123;s&#125;</span>秒`</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="13-Url"><a href="#13-Url" class="headerlink" title="13. Url"></a>13. Url</h2><h3 id="13-1-parseQueryString"><a href="#13-1-parseQueryString" class="headerlink" title="13.1 parseQueryString"></a>13.1 parseQueryString</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc   url参数转对象</div><div class="line"> * @param  &#123;String&#125; url  default: window.location.href</div><div class="line"> * @return &#123;Object&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseQueryString</span>(<span class="params">url</span>) </span>&#123;</div><div class="line">    url = url == <span class="literal">null</span> ? <span class="built_in">window</span>.location.href : url</div><div class="line">    <span class="keyword">var</span> search = url.substring(url.lastIndexOf(<span class="string">'?'</span>) + <span class="number">1</span>)</div><div class="line">    <span class="keyword">if</span> (!search) &#123;</div><div class="line">        <span class="keyword">return</span> &#123;&#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(<span class="string">'&#123;"'</span> + <span class="built_in">decodeURIComponent</span>(search).replace(<span class="regexp">/"/g</span>, <span class="string">'\\"'</span>).replace(<span class="regexp">/&amp;/g</span>, <span class="string">'","'</span>).replace(<span class="regexp">/=/g</span>, <span class="string">'":"'</span>) + <span class="string">'"&#125;'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="13-2-stringfyQueryString"><a href="#13-2-stringfyQueryString" class="headerlink" title="13.2 stringfyQueryString"></a>13.2 stringfyQueryString</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * @desc   对象序列化</div><div class="line"> * @param  &#123;Object&#125; obj</div><div class="line"> * @return &#123;String&#125;</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stringfyQueryString</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!obj) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> pairs = []</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</div><div class="line">        <span class="keyword">var</span> value = obj[key]</div><div class="line">        <span class="keyword">if</span> (value <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; value.length; ++i) &#123;</div><div class="line">                pairs.push(<span class="built_in">encodeURIComponent</span>(key + <span class="string">'['</span> + i + <span class="string">']'</span>) + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(value[i]))</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">continue</span></div><div class="line">        &#125;</div><div class="line">        pairs.push(<span class="built_in">encodeURIComponent</span>(key) + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(obj[key]))</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> pairs.join(<span class="string">'&amp;'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/10/13/ubuntu下安装php-nginx-mysql，构建MinDoc/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="JasonFeng's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        jasonfeng.blue@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/07/">七月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/开发/">开发<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/杂记/">杂记<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="关于我">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于我
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                标签云
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">7</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/JasonFengD" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/2647404347/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo&amp;is_all=1" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/JasonHFeng" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/Jason-Feng-929" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;2016&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>JasonFeng
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+
+    <script>lsloader.load("js/lazyload.min.js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==")</script>
+    <script>lsloader.load("js/js.min.js","/js/js.min.js?oAl/+lvaqTFV31JXTmbrNA==")</script>
+
+
+
+    <script>lsloader.load("js/nprogress.js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==")</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Window Load-->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Bing Background -->
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.4.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
